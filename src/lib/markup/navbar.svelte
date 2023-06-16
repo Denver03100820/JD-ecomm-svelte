@@ -1,5 +1,6 @@
 <script>
     export let imgSrc = "";
+    export let listCategories = [];
 </script>
 <header class="d-flex w-100 border-bottom py-2 px-2 px-md-4">
     <a href="/"class="nav-brand flex-shrink-0 text-decoration-none d-flex ms-3 flex-row align-items-center"
@@ -11,17 +12,13 @@
         <ul class="nav w-100 align-items-center">
             <li class="nav-item d-none d-md-block">
                 <a class="nav-link " href="/"><i class="fa-solid fa-home"></i> &nbsp;Home</a>
-                
             </li>
             <li class="nav-item dropdown d-none d-md-block">
                 <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-list"></i> &nbsp;Categories
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/">Action</a></li>
-                    <li><a class="dropdown-item" href="/">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/"></a></li>
                 </ul>
             </li>
             <li class="ms-auto nav-item d-none d-md-block">
