@@ -1,6 +1,6 @@
 <script>
     import UiIcon from '$lib/component/ui/icon.svelte';
-    export let rating;
+    export let rating = 0;
   </script>
   
   <span>

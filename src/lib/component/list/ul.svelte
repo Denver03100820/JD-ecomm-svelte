@@ -1,6 +1,6 @@
 <script>
     export let className ="";
 </script>
-<div class="card-body {className}">
+<ul class="{className}">
     <slot />
-</div>
+</ul>
