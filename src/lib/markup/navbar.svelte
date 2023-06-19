@@ -13,11 +13,6 @@
   import ModuleCart from "$lib/module/cart/cart.svelte";
   import ModuleCartOrder from "$lib/module/cart/order.svelte";
   import Header from "$lib/component/header/header.svelte";
-  import UiIcon from "$lib/component/ui/icon.svelte";
-  import UiHr from "$lib/component/ui/hr.svelte";
-  import ModuleCart from "$lib/module/cart/cart.svelte";
-  import ModuleCartOrder from "$lib/module/cart/order.svelte";
-  import Header from "$lib/component/header/header.svelte";
   export let listCategories = [
     { link: "/", name: "Mobile Phones" },
     { link: "/", name: "Mens Dress" },
@@ -33,10 +28,16 @@
   let userData;
   let regisData;
   let formType;
+  let modalCart;
+  let modalC;
+  let modalOrder;
+  let modalO;
 
   onMount(() => {
     modalLogin = new bootstrap.Modal(modal);
     modalRegister = new bootstrap.Modal(modalR);
+    modalCart = new bootstrap.Modal(modalC);
+    modalOrder = new bootstrap.Modal(modalO);
     // modalLogin.show();
   });
 
@@ -64,7 +65,7 @@
 
 <header class="d-flex w-100 border-bottom py-2 px-2 px-md-4">
   <a
-    href="/"
+    href={"/lazshopee/web/page"}
     class="nav-brand flex-shrink-0 text-decoration-none d-flex ms-3 flex-row align-items-center"
     style="width: 280px;"
   >
@@ -74,7 +75,7 @@
   <nav class="navbar flex-grow-1">
     <Ul className={"nav w-100 align-items-center"}>
       <Li className={"nav-item d-none d-md-block"}>
-        <Link className={"nav-link"} href={"page"}>
+        <Link className={"nav-link"} href={"/lazshopee/web/page"}>
           <UiIcon type="solid" name="home" /> &nbsp;Home
         </Link>
       </Li>
@@ -117,9 +118,8 @@
         {#if $login.isLogin}
           <Button
             className={"nav-link position-relative"}
-            attributes={{
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#orderModal",
+            action={() => {
+              modalCart.show();
             }}
           >
             <UiIcon type="solid" name="shopping-cart" />
@@ -132,9 +132,8 @@
         {:else}
           <Button
             className={"nav-link position-relative"}
-            attributes={{
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#loginModal",
+            action={() => {
+              modalLogin.show();
             }}
           >
             <UiIcon type="solid" name="shopping-cart" />
@@ -169,9 +168,8 @@
             <Li
               ><Link
                 className={"dropdown-item"}
-                attributes={{
-                  "data-bs-toggle": "modal",
-                  "data-bs-target": "#orderModal",
+                action={() => {
+                  modalOrder.show();
                 }}>My Order</Link
               ></Li
             >
@@ -230,8 +228,12 @@
     </Ul>
   </nav>
 </header>
-<ModuleCart />
-<ModuleCartOrder />
+<ModuleCart 
+  bind:idName={modalC}
+/>
+<ModuleCartOrder 
+  bind:idName={modalO}
+/>
 <ModuleAuthLogin
   bind:idName={modal}
   bind:formData={userData}
