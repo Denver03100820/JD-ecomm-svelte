@@ -12,8 +12,8 @@
   {type}
   class={className}
   id={idName}
-  {placeholder}
-  {value}
   {name}
+  {value}
+  {placeholder}
   {style}
 />

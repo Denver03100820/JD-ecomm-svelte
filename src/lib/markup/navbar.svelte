@@ -2,13 +2,17 @@
   import { onMount } from "svelte";
   import { Ul, Li } from "$lib/component/list";
   import { Link, Button, Input, Label } from "$lib/component/form";
-  import UiIcon from "$lib/component/ui/icon.svelte";
   import ModuleAuthLogin from "$lib/module/auth/login.svelte";
   import ModuleAuthRegister from "$lib/module/accounts/register.svelte";
   import { login, loader, error } from "$lib/module/auth/store.js";
   import { register } from "$lib/module/auth/storeRegister.js";
 
   export let imgSrc = "";
+  import UiIcon from "$lib/component/ui/icon.svelte";
+  import UiHr from "$lib/component/ui/hr.svelte";
+  import ModuleCart from "$lib/module/cart/cart.svelte";
+  import ModuleCartOrder from "$lib/module/cart/order.svelte";
+  import Header from "$lib/component/header/header.svelte";
   export let listCategories = [
     { link: "/", name: "Mobile Phones" },
     { link: "/", name: "Mens Dress" },
@@ -171,3 +175,5 @@
     </Ul>
   </nav>
 </header>
+<ModuleCart />
+<ModuleCartOrder />
