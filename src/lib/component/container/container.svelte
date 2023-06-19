@@ -1,7 +1,8 @@
 <script>
     export let className = "";
+    export let type = "";
 </script>
 
-<div class="container {className}">
+<div class='container{type ? "-"+type : ""} {className}'>
     <slot></slot>
 </div>
