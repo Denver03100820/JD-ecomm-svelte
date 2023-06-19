@@ -3,8 +3,17 @@
   export let className = "form-control";
   export let idName = "";
   export let placeholder = "";
-  export let value = "";
   export let name = "";
+  export let value = "";
+  export let style = "";
 </script>
 
-<input {type} class={className} id={idName} {placeholder} {value} {name} />
+<input
+  {type}
+  class={className}
+  id={idName}
+  {placeholder}
+  {value}
+  {name}
+  {style}
+/>

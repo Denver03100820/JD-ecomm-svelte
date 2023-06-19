@@ -171,14 +171,3 @@
     </Ul>
   </nav>
 </header>
-
-<ModuleAuthLogin
-  bind:idName={modal}
-  bind:formData={userData}
-  bind:form={loginForm}
-/>
-<ModuleAuthRegister
-  bind:idName={modalR}
-  bind:formData={regisData}
-  bind:form={registerForm}
-/>
