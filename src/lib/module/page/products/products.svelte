@@ -19,7 +19,7 @@
     ];
 </script>
 <Container>
-    <Row className={"row-cols-2 row-cols-lg-6 g-2 g-lg-3"}>
+    <Row className={"row-cols-2 row-cols-lg-6 row-cols-md-4 g-2 g-lg-3"}>
         {#each items as item}
             <Col>
                 <Card className="p-0 text-decoration-none">
