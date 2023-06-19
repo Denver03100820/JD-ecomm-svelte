@@ -8,7 +8,7 @@
 </script>
 <section class="banner d-flex w-100">
     <div id="carouselId" class="carousel slide w-100" data-bs-ride="carousel">
-    
+        
         <div class="carousel-inner" role="listbox">
             {#each BannerImage as Banner, Index}
                 <div class="carousel-item w-100 {Index == 0?"active":""}">
@@ -16,6 +16,7 @@
                 </div>
             {/each}
         </div>
+       
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
