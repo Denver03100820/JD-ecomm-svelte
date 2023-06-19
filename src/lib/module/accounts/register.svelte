@@ -13,7 +13,11 @@
   import Header from "$lib/component/header/header.svelte";
   import { Link, Button, Input, Label } from "$lib/component/form";
 
-  export let idName, formData, form;
+  export let idName, formData, form, formType;
+
+  let formTitle,
+    btnLabel = "Register",
+    btnType = "primary";
 
   const submitRegister = () => {
     formData = new FormData(form);
@@ -25,6 +29,18 @@
     // loginForm.reset();
     // idName.hide();
   };
+  $: {
+    console.log(formType);
+    if (formType == "add") {
+      formTitle = "Registration Form";
+      btnLabel = "Register";
+      btnType = "primary";
+    } else {
+      formTitle = "Update information";
+      btnLabel = "Update";
+      btnType = "warning";
+    }
+  }
 </script>
 
 <Modal
@@ -33,7 +49,7 @@
 >
   <form on:submit|preventDefault={submitRegister} bind:this={form}>
     <ModalContent>
-      <ModalHeader>Registration Form</ModalHeader>
+      <ModalHeader>{formTitle}</ModalHeader>
       <ModalBody>
         <Container>
           <Row>
@@ -131,8 +147,8 @@
             </Col>
           </Row>
           <Div className="mt-3">
-            <Button className={"btn btn-primary"} style={"width: 150px;"}
-              >Register</Button
+            <Button className={"btn btn-" + btnType} style={"width: 150px;"}
+              >{btnLabel}</Button
             >
           </Div>
         </Container>

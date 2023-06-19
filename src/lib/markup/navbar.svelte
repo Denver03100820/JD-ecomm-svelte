@@ -13,6 +13,11 @@
   import ModuleCart from "$lib/module/cart/cart.svelte";
   import ModuleCartOrder from "$lib/module/cart/order.svelte";
   import Header from "$lib/component/header/header.svelte";
+  import UiIcon from "$lib/component/ui/icon.svelte";
+  import UiHr from "$lib/component/ui/hr.svelte";
+  import ModuleCart from "$lib/module/cart/cart.svelte";
+  import ModuleCartOrder from "$lib/module/cart/order.svelte";
+  import Header from "$lib/component/header/header.svelte";
   export let listCategories = [
     { link: "/", name: "Mobile Phones" },
     { link: "/", name: "Mens Dress" },
@@ -27,6 +32,7 @@
   let registerForm;
   let userData;
   let regisData;
+  let formType;
 
   onMount(() => {
     modalLogin = new bootstrap.Modal(modal);
@@ -136,25 +142,74 @@
         {/if}
       </Li>
       {#if $login.isLogin}
-        <Li className={"nav-item"}>
-          <Button
+        <Li className={"nav-item dropdown"}>
+          <Link
             className={"nav-link"}
+            href={"/"}
             attributes={{
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#accountModal",
+              role: "button",
+              "data-bs-toggle": "dropdown",
+              "aria-expanded": "false",
             }}
           >
-            <UiIcon name="user-circle" />
-          </Button>
+            <UiIcon type="solid" name="user-circle fa-lg" />
+          </Link>
+          <Ul
+            className={"dropdown-menu dropdown-menu-end mt-3 rounded-0 p-2"}
+            style={"min-width: 300px;"}
+          >
+            <Li
+              ><Header
+                header={"h6"}
+                className={"d-flex text justify-content-center py-2"}
+                >{$login.data[0].firstname} {$login.data[0].lastname}
+              </Header></Li
+            >
+            <Li><UiHr className="dropdown-divider" /></Li>
+            <Li
+              ><Link
+                className={"dropdown-item"}
+                attributes={{
+                  "data-bs-toggle": "modal",
+                  "data-bs-target": "#orderModal",
+                }}>My Order</Link
+              ></Li
+            >
+            <Li
+              ><Link
+                className={"dropdown-item"}
+                action={() => {
+                  modalRegister.show();
+                  formType = "update";
+                }}>Edit Profile</Link
+              ></Li
+            >
+            <Li
+              ><Link className={"dropdown-item"} action={() => login.clear()}
+                >Logout</Link
+              ></Li
+            >
+          </Ul>
         </Li>
       {:else}
         <Li className={"nav-item d-none d-md-block"}>
-          <Button className={"nav-link"} action={() => modalLogin.show()}>
+          <Button
+            className={"nav-link"}
+            action={() => {
+              modalLogin.show();
+            }}
+          >
             <UiIcon type="solid" name="sign-in" /> &nbsp;Login
           </Button>
         </Li>
         <Li className={"nav-item d-none d-md-block"}>
-          <Button className={"nav-link"} action={() => modalRegister.show()}>
+          <Button
+            className={"nav-link"}
+            action={() => {
+              modalRegister.show();
+              formType = "add";
+            }}
+          >
             <UiIcon type="solid" name="user-plus" /> &nbsp;Register
           </Button>
         </Li>
@@ -177,3 +232,14 @@
 </header>
 <ModuleCart />
 <ModuleCartOrder />
+<ModuleAuthLogin
+  bind:idName={modal}
+  bind:formData={userData}
+  bind:form={loginForm}
+/>
+<ModuleAuthRegister
+  bind:idName={modalR}
+  bind:formData={regisData}
+  bind:form={registerForm}
+  {formType}
+/>
