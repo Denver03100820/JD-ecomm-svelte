@@ -4,6 +4,6 @@
     export let attributes ={};
 </script>
 
-<div class={className} style:style {...attributes}>
+<div class={className} style={style} {...attributes}>
     <slot></slot>
 </div>

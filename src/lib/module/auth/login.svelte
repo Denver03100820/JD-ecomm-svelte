@@ -36,14 +36,6 @@
                         <Link className={"text-secondary"} href={"/"}>Forgot Password?</Link>
                     </Col>
                 </Row>
-                <UiHr></UiHr>
-                <Div className={"d-flex justify-content-center"}>
-                    <TextFormat className={"mb-3"}>Sign up with:</TextFormat>
-                </Div>
-                <Div className={"d-flex justify-content-center flex-row"}>
-                    <Button className={"btn btn-outline-primary w-50 me-1"}><UiIcon type="brands" name="facebook"></UiIcon> &nbsp;Facebook</Button>
-                    <Button className={"btn btn-outline-dark w-50 me-1"}><UiIcon type="brands" name="google"></UiIcon> &nbsp;Google</Button>
-                </Div>
             </Container>
         </ModalBody>
     </ModalContent>
