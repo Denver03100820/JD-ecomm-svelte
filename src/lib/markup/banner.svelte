@@ -1,11 +1,10 @@
 <script>
-    export let BannerImage = [];
+    // export let BannerImage = [];
 </script>
 <section class="banner d-flex w-100">
     <div id="carouselId" class="carousel slide w-100" data-bs-ride="carousel">
     
         <div class="carousel-inner" role="listbox">
-            each BannerImage 
             <div class="carousel-item w-100 active">
                 <img src="https://lzd-img-global.slatic.net/g/icms/images/ims-web/be7d687d-9864-4117-bd5a-9f73d31a5ca4.jpg_2200x2200q90.jpg_.webp" class="w-100 h-50 d-block" alt="First slide">
             </div>
