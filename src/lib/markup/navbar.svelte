@@ -13,6 +13,11 @@
   import ModuleCart from "$lib/module/cart/cart.svelte";
   import ModuleCartOrder from "$lib/module/cart/order.svelte";
   import Header from "$lib/component/header/header.svelte";
+  import UiIcon from "$lib/component/ui/icon.svelte";
+  import UiHr from "$lib/component/ui/hr.svelte";
+  import ModuleCart from "$lib/module/cart/cart.svelte";
+  import ModuleCartOrder from "$lib/module/cart/order.svelte";
+  import Header from "$lib/component/header/header.svelte";
   export let listCategories = [
     { link: "/", name: "Mobile Phones" },
     { link: "/", name: "Mens Dress" },
