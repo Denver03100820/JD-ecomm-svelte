@@ -1,5 +1,5 @@
 <script>
-    export let className = "form-control";
+    export let className = "";
     export let idName = "";
     export let forLabel = "";
 
