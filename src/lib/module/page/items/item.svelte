@@ -1,3 +1,14 @@
+<script>
+    let quantity = 0;
+    $:{
+        if(quantity <= 0 )
+        quantity = 0;
+    }
+
+</script>
+
+
+
 <nav class="breadcrumb mb-5">
     <a class="breadcrumb-item text-decoration-none" href="#">Electronics</a>
     <a class="breadcrumb-item text-decoration-none" href="#">Phones</a>
@@ -104,9 +115,9 @@
             <div class="d-flex align-items-center">
                 Quantity
                 <div class="input-group ms-3" style="width: 120px;">
-                    <button class="btn border border-end-0" type="button"><i class="fa-solid fa-minus text-success"></i></button>
-                    <input type="text" class="form-control border border-start-0 border-end-0 text-center text-success" value="0" aria-label="Example text with two button addons">
-                    <button class="btn border border-start-0" type="button"><i class="fa-solid fa-plus text-success"></i></button>
+                    <button class="btn border border-end-0" type="button" on:click={() => quantity -= 1}><i class="fa-solid fa-minus text-success"></i></button>
+                    <input type="text" class="form-control border border-start-0 border-end-0 text-center text-success width-10"  value="{quantity}" aria-label="Example text with two button addons">
+                    <button class="btn border border-start-0" type="button" on:click={() => quantity += 1}><i class="fa-solid fa-plus text-success"></i></button>
                 </div>
                 <small class="px-4" style="font-size: 11px;">
                     Only <span class="text-danger fw-bolder">10 items</span> Left! <br>
