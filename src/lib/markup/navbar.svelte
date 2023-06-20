@@ -160,20 +160,40 @@
             className={"dropdown-menu dropdown-menu-end mt-3 rounded-0 p-2"}
             style={"min-width: 300px;"}
           >
-            <Li
-              ><Header
+
+          <Li>
+            <Header
+              header={"h5"}
+              className={"d-flex text-center justify-content-center mb-2 py-2"}
+              >Profile
+            </Header>
+          </Li>
+
+          <Li><UiHr className="dropdown-divider mb-3" /></Li>
+
+          <Li>
+            <Header
                 header={"h6"}
                 className={"d-flex text justify-content-center py-2"}
                 >{$login.data[0].firstname} {$login.data[0].lastname}
-              </Header></Li
-            >
+              </Header>
+            </Li>
+
+          <Li>
+            <Header
+                header={"p"}
+                className={"d-flex text justify-content-center"}
+                >{$login.data[0].email} 
+            </Header>
+          </Li>
+
             <Li><UiHr className="dropdown-divider" /></Li>
             <Li
               ><Link
                 className={"dropdown-item"}
                 action={() => {
                   modalOrder.show();
-                }}>My Order</Link
+                }}><UiIcon type="solid" name="cube" style="width: 30px;"/> &nbsp;My Order</Link
               ></Li
             >
             <Li
@@ -182,12 +202,12 @@
                 action={() => {
                   modalRegister.show();
                   formType = "update";
-                }}>Edit Profile</Link
+                }}><UiIcon type="solid" name="user-pen" style="width: 30px;"/> &nbsp;Edit Profile</Link
               ></Li
             >
             <Li
               ><Link className={"dropdown-item"} action={() => login.clear()}
-                >Logout</Link
+                ><UiIcon type="solid" name="right-from-bracket" style="width: 30px;" /> &nbsp;Logout</Link
               ></Li
             >
           </Ul>
