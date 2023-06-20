@@ -6,12 +6,12 @@
     import TextFormat from '$lib/component/header/textformat.svelte';
     import Header from '$lib/component/header/header.svelte';
     import { Link, Button, Input, Label, Checkbox } from '$lib/component/form';
-
+    export let idName;
 </script>
 
 
 
-<Modal idName={"cartModal"}  className={"modal-dialog-scrollable modal-dialog-centered modal-lg"}>
+<Modal bind:idName  className={"modal-dialog-scrollable modal-dialog-centered modal-lg"}>
     <ModalContent>
         <ModalHeader>Cart</ModalHeader>
         <ModalBody>
