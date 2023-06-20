@@ -1,8 +1,59 @@
 <script>
+
     let quantity = 0;
     $:{
         if(quantity <= 0 )
         quantity = 0;
+        if(quantity >= 10)
+        quantity = 10;
+    }
+
+    let selectedOptions =  { 
+            "productPrice": "400", 
+            "productImage": "https://fdn2.mobgsm.com/vv/pics/xiaomi/xiaomi-13-ultra-1.jpg",
+            "productName": "Xiaomi",
+            "productDescription" : 
+            "Xiaomi 13 Pro is the latest realization of our imaging philosophy and the masterpiece behind the masterpiece. Professional optics, emotive imaging aesthetics and full Leica experience are embodied in the device to bridge the century old imaging legends and the masterpieces you are creating today."
+        }
+    ;
+   
+    
+    
+    
+
+    let options = [
+        { 
+            "productPrice": "400", 
+            "productImage": "https://fdn2.mobgsm.com/vv/pics/xiaomi/xiaomi-13-ultra-1.jpg",
+            "productName": "Xiaomi",
+            "productDescription" : 
+            "Xiaomi 13 Pro is the latest realization of our imaging philosophy and the masterpiece behind the masterpiece. Professional optics, emotive imaging aesthetics and full Leica experience are embodied in the device to bridge the century old imaging legends and the masterpieces you are creating today."
+        },
+        { 
+            "productPrice": "425", 
+            "productImage": "https://cdn-files.kimovil.com/default/0008/64/thumb_763515_default_big.jpg",
+            "productName": "Xiaomi",
+            "productDescription" : 
+            "Xiaomi 13 Pro is the latest realization of our imaging philosophy and the masterpiece behind the masterpiece. Professional optics, emotive imaging aesthetics and full Leica experience are embodied in the device to bridge the century old imaging legends and the masterpieces you are creating today."
+        },
+        { 
+            "productPrice": "435", 
+            "productImage": "https://specifications-pro.com/wp-content/uploads/2022/03/Xiaomi-13-Ultra-3-600x600.png",
+            "productName": "Xiaomi",
+            "productDescription" : 
+            "Xiaomi 13 Pro is the latest realization of our imaging philosophy and the masterpiece behind the masterpiece. Professional optics, emotive imaging aesthetics and full Leica experience are embodied in the device to bridge the century old imaging legends and the masterpieces you are creating today."
+        },
+        { 
+            "productPrice": "445", 
+            "productImage": "https://cdn11.bigcommerce.com/s-gdiye50htc/images/stencil/500x659/products/623/4123/MPH2467Y__23034.1683400148.jpg?c=1",
+            "productName": "Xiaomi",
+            "productDescription" : 
+            "Xiaomi 13 Pro is the latest realization of our imaging philosophy and the masterpiece behind the masterpiece. Professional optics, emotive imaging aesthetics and full Leica experience are embodied in the device to bridge the century old imaging legends and the masterpieces you are creating today."
+        },
+    ];
+
+    function handleClick(item) {
+        selectedOptions = item;
     }
 
 </script>
@@ -61,10 +112,14 @@
             </div>
         </div>
         <div class="col-12 col-md-7 d-flex flex-column px-5 py-3">
-            <h3>Nokia</h3>
+            {#if selectedOptions}
+            <h3>{selectedOptions.productName}</h3>
+            
+            
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur culpa voluptatem quibusdam accusantium ipsam asperiores hic dicta placeat eum minima nulla perspiciatis nemo, voluptatum libero, autem fugit aliquam error nesciunt?
+                {selectedOptions.productDescription}
             </p>
+            {/if}
             <small>
                 <i class="fa-solid fa-star text-warning"></i>
                 <i class="fa-solid fa-star text-warning"></i>
@@ -74,45 +129,31 @@
                 (200)
             </small>
             <hr>
-            
+           
 
             <h4 class="h5">Options</h4>
             <div class="d-flex mt-1">
-                <a href="" class="mx-3" style="background: url('https://www.stuff.tv/wp-content/uploads/sites/2/2022/11/Stuff-Best-Smartphone-Lead.png') no-repeat center center;
-                background-size: cover;
-                background-position: center;
-                -webkit-background-size: cover;
-                -moz-background-size: cover; 
-                -o-background-size: cover;
-                height: 70px; width: 70px;">
-                </a>
-                <a href="" class="mx-3" style="background: url('https://www.stuff.tv/wp-content/uploads/sites/2/2022/11/Stuff-Best-Smartphone-Lead.png') no-repeat center center;
-                background-size: cover;
-                background-position: center;
-                -webkit-background-size: cover;
-                -moz-background-size: cover; 
-                -o-background-size: cover;
-                height: 70px; width: 70px;">
-                </a>
-                <a href="" class="mx-3" style="background: url('https://www.stuff.tv/wp-content/uploads/sites/2/2022/11/Stuff-Best-Smartphone-Lead.png') no-repeat center center;
-                background-size: cover;
-                background-position: center;
-                -webkit-background-size: cover;
-                -moz-background-size: cover; 
-                -o-background-size: cover;
-                height: 70px; width: 70px;">
-                </a>
-                <a href="" class="mx-3" style="background: url('https://www.stuff.tv/wp-content/uploads/sites/2/2022/11/Stuff-Best-Smartphone-Lead.png') no-repeat center center;
-                background-size: cover;
-                background-position: center;
-                -webkit-background-size: cover;
-                -moz-background-size: cover; 
-                -o-background-size: cover;
-                height: 70px; width: 70px;">
-                </a>
-            </div>
-            <hr>
+                {#each options as variant}
+                  <a href="#" class="mx-3" on:click={() => handleClick(variant)}>
+                    <img src="{variant.productImage}" style="background-size: cover;
+                      background-position: center;
+                      -webkit-background-size: cover;
+                      -moz-background-size: cover; 
+                      -o-background-size: cover;
+                      height: 70px; width: 70px;" alt="">
+                  </a>
+                {/each}
+              </div>
+              <hr>
+              <div class="d-flex align-items-center mb-4">
+                {#if selectedOptions}
+                  <label for=""><h1>${selectedOptions.productPrice}</h1></label>
+                {/if}
+              </div>
+          
             <div class="d-flex align-items-center">
+                
+                
                 Quantity
                 <div class="input-group ms-3" style="width: 120px;">
                     <button class="btn border border-end-0" type="button" on:click={() => quantity -= 1}><i class="fa-solid fa-minus text-success"></i></button>
@@ -160,3 +201,4 @@
         </div>
     </div>
 </div>
+
