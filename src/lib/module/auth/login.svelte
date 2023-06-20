@@ -8,33 +8,28 @@
     ModalBody,
     ModalFooter,
   } from "$lib/component/modal";
-  import UiHr from "$lib/component/ui/hr.svelte";
-  import UiIcon from "$lib/component/ui/icon.svelte";
-  import TextFormat from "$lib/component/header/textformat.svelte";
   import { Link, Button, Input, Label } from "$lib/component/form";
-  import { login, loader, error } from "$lib/module/auth/store.js";
 
-  export let idName, formData, form;
+  export let idName, formData, form, error, errorMsg;
 
   const submitLogin = () => {
     formData = new FormData(form);
 
     formData = Object.fromEntries(formData.entries());
-    console.log(formData);
-    // register.set(regisData);
-
-    // loginForm.reset();
-    // idName.hide();
   };
+  $: console.log(errorMsg);
 </script>
 
 <Modal bind:idName>
-  <form on:submit|preventDefault={submitLogin} bind:this={form}>
-    <ModalContent>
-      <ModalHeader>Login</ModalHeader>
-      <ModalBody>
+  <ModalContent>
+    <ModalHeader>Login</ModalHeader>
+    <ModalBody>
+      <form on:submit|preventDefault={submitLogin} bind:this={form}>
         <Container>
           <Div className={"d-flex flex-column mb-3"}>
+            {#if error}
+              <Div className={"alert alert-danger"}>{errorMsg}</Div>
+            {/if}
             <Div className={"form-floating mb-3"}>
               <Input
                 idName={"floatingUsername"}
@@ -76,7 +71,7 @@
                           <Button className={"btn btn-outline-dark w-50 me-1"}><UiIcon type="brands" name="google"></UiIcon> &nbsp;Google</Button>
                       </Div> -->
         </Container>
-      </ModalBody>
-    </ModalContent>
-  </form>
+      </form>
+    </ModalBody>
+  </ModalContent>
 </Modal>

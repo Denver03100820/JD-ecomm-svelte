@@ -7,9 +7,7 @@
     ModalBody,
     ModalFooter,
   } from "$lib/component/modal";
-  // import UiHr from '$lib/component/ui/hr.svelte';
-  // import UiIcon from '$lib/component/ui/icon.svelte';
-  // import TextFormat from '$lib/component/header/textformat.svelte';
+
   import Header from "$lib/component/header/header.svelte";
   import { Link, Button, Input, Label } from "$lib/component/form";
 
@@ -21,16 +19,10 @@
 
   const submitRegister = () => {
     formData = new FormData(form);
-
     formData = Object.fromEntries(formData.entries());
-    // console.log(formData);
-    // register.set(regisData);
-
-    // loginForm.reset();
-    // idName.hide();
   };
+
   $: {
-    console.log(formType);
     if (formType == "add") {
       formTitle = "Registration Form";
       btnLabel = "Register";
