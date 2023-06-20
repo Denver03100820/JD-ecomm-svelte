@@ -27,18 +27,29 @@ const authStore =()=>{
             console.log(data)
 
             let accounts = JSON.parse(localStorage.getItem("registerAccount"))
-
-            let isExist = accounts.filter(account => account.username == data.username && account.password == data.password )
-
-            if(isExist.length)
+            console.log(accounts)
+            if(accounts)
             {
-                let userDetails = {isLogin:true,data:isExist};
-                setLoginDetails(userDetails);
-                loader.set(false)
+                let isExist = accounts.filter(account => account.username == data.username && account.password == data.password )
+    
+                if(isExist.length)
+                {
+                    let userDetails = {isLogin:true,data:isExist};
+                    setLoginDetails(userDetails);
+                    loader.set(false)
+                    error.set(false)
+                    errorMsg.set("");
+                }
+                else
+                {
+                    error.set(true)
+                    errorMsg.set("Invalid username or password");
+                }
             }
             else
             {
-                error.set(false)
+                error.set(true)
+                errorMsg.set("Acount does not exist");
             }
         },
         clear:()=>{
@@ -47,6 +58,7 @@ const authStore =()=>{
         }
     }
 }
-export const login = authStore();
-export const loader = writable(false)
-export const error  = writable(false)
+export const login     = authStore();
+export const loader    = writable(false)
+export const error     = writable(false)
+export const errorMsg  = writable("")

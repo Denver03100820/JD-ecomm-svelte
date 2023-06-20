@@ -4,15 +4,17 @@
   import { Link, Button, Input, Label } from "$lib/component/form";
   import ModuleAuthLogin from "$lib/module/auth/login.svelte";
   import ModuleAuthRegister from "$lib/module/accounts/register.svelte";
-  import { login, loader, error } from "$lib/module/auth/store.js";
-  import { register } from "$lib/module/auth/storeRegister.js";
 
-  export let imgSrc = "";
+  import { login, loader, error, errorMsg } from "$lib/module/auth/store.js";
+  import { register } from "$lib/module/accounts/storeRegister.js";
   import UiIcon from "$lib/component/ui/icon.svelte";
   import UiHr from "$lib/component/ui/hr.svelte";
   import ModuleCart from "$lib/module/cart/cart.svelte";
   import ModuleCartOrder from "$lib/module/cart/order.svelte";
   import Header from "$lib/component/header/header.svelte";
+  export let imgSrc = "";
+
+
   export let listCategories = [
     { link: "/", name: "Mobile Phones" },
     { link: "/", name: "Mens Dress" },
@@ -54,13 +56,14 @@
     if (data) {
       login.set(data);
       loginForm.reset();
-      modalLogin.hide();
+      !$error && modalLogin.hide();
       userData = null;
     }
   };
 
   $: saveAccount(regisData);
   $: submitlogin(userData);
+  $: console.log($errorMsg);
 </script>
 
 <header class="d-flex w-100 border-bottom py-2 px-2 px-md-4">
@@ -238,6 +241,8 @@
   bind:idName={modal}
   bind:formData={userData}
   bind:form={loginForm}
+  bind:error={$error}
+  bind:errorMsg={$errorMsg}
 />
 <ModuleAuthRegister
   bind:idName={modalR}
