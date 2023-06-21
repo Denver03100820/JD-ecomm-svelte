@@ -1,4 +1,5 @@
 <script>
+
   import UiImage from "$lib/component/ui/image.svelte";
   import UiIcon from "$lib/component/ui/icon.svelte";
   import UiHr from "$lib/component/ui/hr.svelte";
@@ -9,6 +10,7 @@
   import StarRating from "$lib/module/page/products/starRating.svelte";
   import Input from "$lib/component/form/input.svelte";
   import { order } from "$lib/module/cart/store.js";
+
 
   export let items;
   console.log($order);
@@ -48,6 +50,7 @@
     }
   };
 </script>
+
 
 <Container>
   <Row className="bg-white p-4">
@@ -119,3 +122,4 @@
     </Col>
   </Row>
 </Container>
+
