@@ -4,16 +4,15 @@
   import { Link, Button, Input, Label } from "$lib/component/form";
   import ModuleAuthLogin from "$lib/module/auth/login.svelte";
   import ModuleAuthRegister from "$lib/module/accounts/register.svelte";
-
   import { login, loader, error, errorMsg } from "$lib/module/auth/store.js";
   import { register } from "$lib/module/accounts/storeRegister.js";
+  import { order } from "$lib/module/cart/store.js";
   import UiIcon from "$lib/component/ui/icon.svelte";
   import UiHr from "$lib/component/ui/hr.svelte";
   import ModuleCart from "$lib/module/cart/cart.svelte";
   import ModuleCartOrder from "$lib/module/cart/order.svelte";
   import Header from "$lib/component/header/header.svelte";
   export let imgSrc = "";
-
 
   export let listCategories = [
     { link: "/", name: "Mobile Phones" },
@@ -40,7 +39,6 @@
     modalRegister = new bootstrap.Modal(modalR);
     modalCart = new bootstrap.Modal(modalC);
     modalOrder = new bootstrap.Modal(modalO);
-    // modalLogin.show();
   });
 
   const saveAccount = (data) => {
@@ -251,12 +249,8 @@
     </Ul>
   </nav>
 </header>
-<ModuleCart 
-  bind:idName={modalC}
-/>
-<ModuleCartOrder 
-  bind:idName={modalO}
-/>
+<ModuleCart bind:idName={modalC} />
+<ModuleCartOrder bind:idName={modalO} items={$order} />
 <ModuleAuthLogin
   bind:idName={modal}
   bind:formData={userData}
